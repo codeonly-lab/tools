@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SVIS AI Hackathon – AI Tools Showcase</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec7, #6ecbff);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Glowing animated orbs */
+    .orbs {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb {
+      position: absolute;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,128,191,0.6) 100%);
+      opacity: 0.6;
+      filter: blur(2px);
+      animation: floatUp 5s linear infinite;
+    }
+    .orb.blue {
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(128,191,255,0.6) 100%);
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) scale(0.8); opacity:0.9; }
+      50%  { transform: translateY(50vh) scale(1.2); opacity:1; }
+      100% { transform: translateY(-20vh) scale(0.7); opacity:0.6; }
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+    header h1 {
+      font-size:3rem;
+      font-weight:bold;
+      letter-spacing:1px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+    header p {
+      margin-top:1rem;
+      font-size:1.2rem;
+      opacity:0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin:2rem auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap:1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .tool {
+      background: rgba(255,255,255,0.95);
+      color: #333;
+      padding:1.5rem;
+      border-radius:14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+    .tool:hover {
+      transform: translateY(-7px);
+      filter: invert(1);
+    }
+    .tool h2 {
+      margin-bottom:0.5rem;
+      color:#d94fbf;
+      font-size:1.4rem;
+    }
+    .tool p {
+      margin:0.4rem 0;
+      font-size:0.95rem;
+    }
+    .tool a {
+      display:inline-block;
+      margin-top:0.5rem;
+      margin-right:10px;
+      color:#0077cc;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .tool a:hover {
+      text-decoration:underline;
+    }
+
+    footer {
+      text-align:center;
+      padding:1.5rem;
+      margin-top:2rem;
+      background: rgba(0,0,0,0.4);
+      position: relative;
+      z-index: 2;
+      font-size:0.9rem;
+      border-top:1px solid rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="orbs">
+    <div class="orb" style="width:60px;height:60px;left:10%; animation-delay:0s;"></div>
+    <div class="orb blue" style="width:90px;height:90px;left:25%; animation-delay:1s;"></div>
+    <div class="orb" style="width:70px;height:70px;left:40%; animation-delay:2s;"></div>
+    <div class="orb blue" style="width:110px;height:110px;left:55%; animation-delay:0.5s;"></div>
+    <div class="orb" style="width:80px;height:80px;left:70%; animation-delay:1.5s;"></div>
+    <div class="orb blue" style="width:100px;height:100px;left:85%; animation-delay:2.5s;"></div>
+  </div>
+
+  <header>
+    <h1>SVIS AI Hackathon</h1>
+    <p>Showcasing the most powerful AI tools for coding</p>
+  </header>
+
+  <div class="container">
+    <div class="tool">
+      <h2>GitHub</h2>
+      <p><strong>Why:</strong> Store, share, and collaborate on code projects.</p>
+      <a href="https://github.com" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/watch?v=ussgXhJ-cp0" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Copilot</h2>
+      <p><strong>Why:</strong> AI pair programmer that suggests code in real-time.</p>
+      <a href="https://github.com/features/copilot" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/watch?v=ZQBrjVvqhD0" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>ChatGPT</h2>
+      <p><strong>Why:</strong> AI assistant for generating code, debugging, and instructions.</p>
+      <a href="https://chat.openai.com" target="_blank">Official Website</a>
+      <a href="https://youtu.be/7I0BJyebaek?si=YI9jOtflKufyKZJx" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Blackbox AI</h2>
+      <p><strong>Why:</strong> Debug and develop code faster with AI assistance.</p>
+      <a href="https://www.useblackbox.io/" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/watch?v=Bme51ZXeXOA" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Cursor</h2>
+      <p><strong>Why:</strong> AI-powered code editor that helps write and fix code faster.</p>
+      <a href="https://cursor.sh" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/watch?v=ocMOZpuAMw4" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Lovable</h2>
+      <p><strong>Why:</strong> Build apps and websites without coding.</p>
+      <a href="https://lovable.dev" target="_blank">Official Website</a>
+      <a href="https://youtu.be/LQezlq06oaY?si=FvFofrJ7mvGOFe3B" target="_blank">Tutorial</a>
+    </div>
+  </div>
+
+
+</body>
+</html>
