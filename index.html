@@ -1,219 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SVIS AI Hackathon – AI Tools Showcase</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVIS AI Hackathon – Interactive AI Tools</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Courier New', monospace;
-      background: #000;
-      color: #00ff00;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+  body {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #00ff00;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    cursor: crosshair;
+  }
 
-    header {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 4rem 1rem 3rem;
-      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-    }
-    header h1 {
-      font-size:3rem;
-      font-weight:bold;
-      letter-spacing:2px;
-    }
-    header p {
-      margin-top:1rem;
-      font-size:1.2rem;
-      opacity:0.8;
-    }
+  header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    animation: glitch 1s infinite;
+  }
+  header h1 { font-size:3rem; font-weight:bold; letter-spacing:2px; }
+  header p { margin-top:1rem; font-size:1.2rem; opacity:0.8; }
 
-    .container {
-      max-width: 1200px;
-      margin:2rem auto;
-      padding:0 1rem;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap:1.5rem;
-      position: relative;
-      z-index: 2;
-    }
-    .tool {
-      background: rgba(0,0,0,0.85);
-      color: #00ff00;
-      padding:1.5rem;
-      border-radius:10px;
-      box-shadow: 0 0 15px #00ff00;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .tool:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 0 25px #00ff00, 0 0 40px #00ff00 inset;
-    }
-    .tool h2 {
-      margin-bottom:0.5rem;
-      color:#00ff99;
-      font-size:1.4rem;
-    }
-    .tool p {
-      margin:0.4rem 0;
-      font-size:0.95rem;
-    }
-    .tool a {
-      display:inline-block;
-      margin-top:0.5rem;
-      margin-right:10px;
-      color:#00ff99;
-      text-decoration:none;
-      font-weight:bold;
-    }
-    .tool a:hover {
-      text-decoration:underline;
-    }
+  @keyframes glitch {
+    0% { text-shadow: 2px 0 #00ff00, -2px 2px #00ff00; }
+    25% { text-shadow: -2px -2px #00ff00, 2px 2px #00ff00; }
+    50% { text-shadow: 2px 2px #00ff00, -2px -2px #00ff00; }
+    75% { text-shadow: -2px 0 #00ff00, 2px -2px #00ff00; }
+    100% { text-shadow: 2px -2px #00ff00, -2px 2px #00ff00; }
+  }
 
-    footer {
-      text-align:center;
-      padding:1.5rem;
-      margin-top:2rem;
-      background: rgba(0,0,0,0.4);
-      position: relative;
-      z-index: 2;
-      font-size:0.9rem;
-      border-top:1px solid #00ff00;
-    }
+  .container {
+    max-width: 1200px;
+    margin:2rem auto;
+    padding:0 1rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap:1.5rem;
+    position: relative;
+    z-index: 2;
+  }
 
-    /* Fullscreen particles layer */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
+  .tool {
+    background: rgba(0,0,0,0.85);
+    color: #00ff00;
+    padding:1.5rem;
+    border-radius:10px;
+    box-shadow: 0 0 15px #00ff00;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
 
-    @media(max-width:480px){
-      header h1 { font-size: 2rem; }
-      .tool { padding: 1rem; }
-    }
-  </style>
+  .tool:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 0 25px #00ff00, 0 0 40px #00ff00 inset;
+    animation: shake 0.3s;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    25% { transform: translate(-1px, -2px) rotate(-1deg); }
+    50% { transform: translate(-3px, 0px) rotate(1deg); }
+    75% { transform: translate(3px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -1px) rotate(1deg); }
+  }
+
+  .tool h2 { margin-bottom:0.5rem; color:#00ff99; font-size:1.4rem; }
+  .tool p { margin:0.4rem 0; font-size:0.95rem; min-height: 60px; }
+  .tool a {
+    display:inline-block; margin-top:0.5rem; margin-right:10px;
+    color:#00ff99; text-decoration:none; font-weight:bold;
+  }
+  .tool a:hover { text-decoration:underline; }
+
+  footer {
+    text-align:center;
+    padding:1.5rem;
+    margin-top:2rem;
+    background: rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
+    font-size:0.9rem;
+    border-top:1px solid #00ff00;
+  }
+
+  #particles-js {
+    position: fixed; width: 100%; height: 100%; top:0; left:0; z-index:0;
+  }
+
+  .typing span { display:inline-block; opacity:0; }
+</style>
 </head>
 <body>
 
-  <!-- Particles.js container -->
-  <div id="particles-js"></div>
+<div id="particles-js"></div>
 
-  <header>
-    <h1>SVIS AI Hackathon</h1>
-    <p>Showcasing the most powerful AI tools for coding</p>
-  </header>
+<header>
+  <h1>SVIS AI Hackathon</h1>
+  <p>Showcasing the most powerful AI tools for coding</p>
+</header>
 
-  <div class="container">
-    <div class="tool">
-      <h2>GitHub</h2>
-      <p><strong>Why:</strong> Store, share, and collaborate on code projects.</p>
-      <a href="https://github.com" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/watch?v=ussgXhJ-cp0" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Copilot</h2>
-      <p><strong>Why:</strong> AI pair programmer that suggests code in real-time.</p>
-      <a href="https://github.com/features/copilot" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/watch?v=ZQBrjVvqhD0" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>ChatGPT</h2>
-      <p><strong>Why:</strong> AI assistant for generating code, debugging, and instructions.</p>
-      <a href="https://chat.openai.com" target="_blank">Official Website</a>
-      <a href="https://youtu.be/7I0BJyebaek?si=YI9jOtflKufyKZJx" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Blackbox AI</h2>
-      <p><strong>Why:</strong> Debug and develop code faster with AI assistance.</p>
-      <a href="https://www.useblackbox.io/" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/watch?v=Bme51ZXeXOA" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Cursor</h2>
-      <p><strong>Why:</strong> AI-powered code editor that helps write and fix code faster.</p>
-      <a href="https://cursor.sh" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/watch?v=ocMOZpuAMw4" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Lovable</h2>
-      <p><strong>Why:</strong> Build apps and websites without coding.</p>
-      <a href="https://lovable.dev" target="_blank">Official Website</a>
-      <a href="https://youtu.be/LQezlq06oaY?si=FvFofrJ7mvGOFe3B" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Gemini</h2>
-      <p><strong>Why:</strong> Advanced AI platform for building and deploying intelligent applications.</p>
-      <a href="https://www.gemini.com/" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/results?search_query=gemini+ai+tutorial" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Deep Seek</h2>
-      <p><strong>Why:</strong> AI search engine for semantic and context-aware information retrieval.</p>
-      <a href="https://www.deepseek.ai/" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/results?search_query=deep+seek+ai+tutorial" target="_blank">Tutorial</a>
-    </div>
-
-    <div class="tool">
-      <h2>Claude</h2>
-      <p><strong>Why:</strong> AI assistant for natural language processing, text generation, and reasoning.</p>
-      <a href="https://www.anthropic.com/claude" target="_blank">Official Website</a>
-      <a href="https://www.youtube.com/watch?v=i3tRkbsE54Q" target="_blank">Tutorial</a>
-    </div>
+<div class="container">
+  <!-- Tool Cards -->
+  <div class="tool">
+    <h2>GitHub</h2>
+    <p class="typing" data-text="Store, share, and collaborate on code projects."></p>
+    <a href="https://github.com" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/watch?v=ussgXhJ-cp0" target="_blank">Tutorial</a>
   </div>
+  <div class="tool">
+    <h2>Copilot</h2>
+    <p class="typing" data-text="AI pair programmer that suggests code in real-time."></p>
+    <a href="https://github.com/features/copilot" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/watch?v=ZQBrjVvqhD0" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>ChatGPT</h2>
+    <p class="typing" data-text="AI assistant for generating code, debugging, and instructions."></p>
+    <a href="https://chat.openai.com" target="_blank">Official Website</a>
+    <a href="https://youtu.be/7I0BJyebaek?si=YI9jOtflKufyKZJx" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Blackbox AI</h2>
+    <p class="typing" data-text="Debug and develop code faster with AI assistance."></p>
+    <a href="https://www.useblackbox.io/" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/watch?v=Bme51ZXeXOA" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Cursor</h2>
+    <p class="typing" data-text="AI-powered code editor that helps write and fix code faster."></p>
+    <a href="https://cursor.sh" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/watch?v=ocMOZpuAMw4" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Lovable</h2>
+    <p class="typing" data-text="Build apps and websites without coding."></p>
+    <a href="https://lovable.dev" target="_blank">Official Website</a>
+    <a href="https://youtu.be/LQezlq06oaY?si=FvFofrJ7mvGOFe3B" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Gemini</h2>
+    <p class="typing" data-text="Advanced AI platform for building and deploying intelligent applications."></p>
+    <a href="https://www.gemini.com/" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/results?search_query=gemini+ai+tutorial" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Deep Seek</h2>
+    <p class="typing" data-text="AI search engine for semantic and context-aware information retrieval."></p>
+    <a href="https://www.deepseek.ai/" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/results?search_query=deep+seek+ai+tutorial" target="_blank">Tutorial</a>
+  </div>
+  <div class="tool">
+    <h2>Claude</h2>
+    <p class="typing" data-text="AI assistant for natural language processing, text generation, and reasoning."></p>
+    <a href="https://www.anthropic.com/claude" target="_blank">Official Website</a>
+    <a href="https://www.youtube.com/results?search_query=claude+ai+tutorial" target="_blank">Tutorial</a>
+  </div>
+</div>
 
-  <footer>
-    &copy; 2025 SVIS AI Hackathon. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2025 SVIS AI Hackathon. All rights reserved.
+</footer>
 
-  <!-- Particles.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00ff00" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-        "opacity": { "value": 0.5, "random": true },
-        "size": { "value": 3, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#00ff00", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        },
-        "modes": {
-          "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
-          "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.8 },
-          "repulse": { "distance": 100 },
-          "push": { "particles_nb": 4 },
-          "remove": { "particles_nb": 2 }
-        }
-      },
-      "retina_detect": true
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  // Initialize Particles
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 180, density: { enable:true, value_area:800 } },
+      color: { value:"#00ff00" },
+      shape: { type:"circle" },
+      opacity: { value:0.5, random:true },
+      size: { value:3, random:true },
+      line_linked: { enable:true, distance:150, color:"#00ff00", opacity:0.4, width:1 },
+      move: { enable:true, speed:2, out_mode:"out" }
+    },
+    interactivity: {
+      detect_on:"canvas",
+      events: { onhover:{ enable:true, mode:"repulse" }, onclick:{ enable:true, mode:"push" } },
+      modes: { repulse:{ distance:100 }, push:{ particles_nb:5 } }
+    },
+    retina_detect:true
+  });
+
+  // Typing animation with hover speed boost
+  const typingElements = document.querySelectorAll('.typing');
+  typingElements.forEach(el => {
+    const text = el.dataset.text;
+    let i = 0;
+    function type(speed=50){
+      if(i < text.length){
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(()=>type(speed), speed + Math.random()*50);
+      }
+    }
+    type();
+
+    el.parentElement.addEventListener('mouseenter', ()=>{
+      i=0; el.innerHTML='';
+      type(15); // faster on hover
     });
-  </script>
+  });
+
+  // Mouse-follow card tilt effect
+  const tools = document.querySelectorAll('.tool');
+  document.addEventListener('mousemove', e=>{
+    tools.forEach(card=>{
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width/2;
+      const y = e.clientY - rect.top - rect.height/2;
+      card.style.transform = `rotateY(${x/30}deg) rotateX(${-y/30}deg) scale(1.05)`;
+    });
+  });
+  document.addEventListener('mouseleave', ()=>{
+    tools.forEach(card=> card.style.transform='scale(1)');
+  });
+</script>
 </body>
 </html>
-
