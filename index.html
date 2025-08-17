@@ -51,7 +51,6 @@
       border-radius:10px;
       box-shadow: 0 0 15px #00ff00;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Courier New', monospace;
     }
     .tool:hover {
       transform: translateY(-7px);
@@ -97,6 +96,11 @@
       top: 0;
       left: 0;
       z-index: 0;
+    }
+
+    @media(max-width:480px){
+      header h1 { font-size: 2rem; }
+      .tool { padding: 1rem; }
     }
   </style>
 </head>
@@ -152,6 +156,27 @@
       <a href="https://lovable.dev" target="_blank">Official Website</a>
       <a href="https://youtu.be/LQezlq06oaY?si=FvFofrJ7mvGOFe3B" target="_blank">Tutorial</a>
     </div>
+
+    <div class="tool">
+      <h2>Gemini</h2>
+      <p><strong>Why:</strong> Advanced AI platform for building and deploying intelligent applications.</p>
+      <a href="https://www.gemini.com/" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/results?search_query=gemini+ai+tutorial" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Deep Seek</h2>
+      <p><strong>Why:</strong> AI search engine for semantic and context-aware information retrieval.</p>
+      <a href="https://www.deepseek.ai/" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/results?search_query=deep+seek+ai+tutorial" target="_blank">Tutorial</a>
+    </div>
+
+    <div class="tool">
+      <h2>Claude</h2>
+      <p><strong>Why:</strong> AI assistant for natural language processing, text generation, and reasoning.</p>
+      <a href="https://www.anthropic.com/claude" target="_blank">Official Website</a>
+      <a href="https://www.youtube.com/results?search_query=claude+ai+tutorial" target="_blank">Tutorial</a>
+    </div>
   </div>
 
   <footer>
@@ -163,33 +188,13 @@
   <script>
     particlesJS("particles-js", {
       "particles": {
-        "number": {
-          "value": 120,
-          "density": { "enable": true, "value_area": 800 }
-        },
+        "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#00ff00" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000000" }
-        },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
         "opacity": { "value": 0.5, "random": true },
         "size": { "value": 3, "random": true },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#00ff00",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
+        "line_linked": { "enable": true, "distance": 150, "color": "#00ff00", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
         "detect_on": "canvas",
@@ -211,3 +216,4 @@
   </script>
 </body>
 </html>
+
