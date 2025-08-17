@@ -8,37 +8,12 @@
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff6ec7, #6ecbff);
-      color: #fff;
+      font-family: 'Courier New', monospace;
+      background: #000;
+      color: #00ff00;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-    }
-
-    /* Glowing animated orbs */
-    .orbs {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .orb {
-      position: absolute;
-      border-radius:50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,128,191,0.6) 100%);
-      opacity: 0.6;
-      filter: blur(2px);
-      animation: floatUp 5s linear infinite;
-    }
-    .orb.blue {
-      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(128,191,255,0.6) 100%);
-    }
-    @keyframes floatUp {
-      0%   { transform: translateY(110vh) scale(0.8); opacity:0.9; }
-      50%  { transform: translateY(50vh) scale(1.2); opacity:1; }
-      100% { transform: translateY(-20vh) scale(0.7); opacity:0.6; }
     }
 
     header {
@@ -46,17 +21,17 @@
       z-index: 2;
       text-align: center;
       padding: 4rem 1rem 3rem;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
     }
     header h1 {
       font-size:3rem;
       font-weight:bold;
-      letter-spacing:1px;
-      text-shadow: 0 0 20px rgba(255,255,255,0.4);
+      letter-spacing:2px;
     }
     header p {
       margin-top:1rem;
       font-size:1.2rem;
-      opacity:0.9;
+      opacity:0.8;
     }
 
     .container {
@@ -70,21 +45,21 @@
       z-index: 2;
     }
     .tool {
-      background: rgba(255,255,255,0.95);
-      color: #333;
+      background: rgba(0,0,0,0.85);
+      color: #00ff00;
       padding:1.5rem;
-      border-radius:14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, filter 0.3s ease;
-      backdrop-filter: blur(8px);
+      border-radius:10px;
+      box-shadow: 0 0 15px #00ff00;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Courier New', monospace;
     }
     .tool:hover {
       transform: translateY(-7px);
-      filter: invert(1);
+      box-shadow: 0 0 25px #00ff00, 0 0 40px #00ff00 inset;
     }
     .tool h2 {
       margin-bottom:0.5rem;
-      color:#d94fbf;
+      color:#00ff99;
       font-size:1.4rem;
     }
     .tool p {
@@ -95,7 +70,7 @@
       display:inline-block;
       margin-top:0.5rem;
       margin-right:10px;
-      color:#0077cc;
+      color:#00ff99;
       text-decoration:none;
       font-weight:bold;
     }
@@ -111,19 +86,24 @@
       position: relative;
       z-index: 2;
       font-size:0.9rem;
-      border-top:1px solid rgba(255,255,255,0.3);
+      border-top:1px solid #00ff00;
+    }
+
+    /* Fullscreen particles layer */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <div class="orbs">
-    <div class="orb" style="width:60px;height:60px;left:10%; animation-delay:0s;"></div>
-    <div class="orb blue" style="width:90px;height:90px;left:25%; animation-delay:1s;"></div>
-    <div class="orb" style="width:70px;height:70px;left:40%; animation-delay:2s;"></div>
-    <div class="orb blue" style="width:110px;height:110px;left:55%; animation-delay:0.5s;"></div>
-    <div class="orb" style="width:80px;height:80px;left:70%; animation-delay:1.5s;"></div>
-    <div class="orb blue" style="width:100px;height:100px;left:85%; animation-delay:2.5s;"></div>
-  </div>
+
+  <!-- Particles.js container -->
+  <div id="particles-js"></div>
 
   <header>
     <h1>SVIS AI Hackathon</h1>
@@ -174,6 +154,60 @@
     </div>
   </div>
 
+  <footer>
+    &copy; 2025 SVIS AI Hackathon. All rights reserved.
+  </footer>
 
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 120,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#00ff00" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" }
+        },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00ff00",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+          "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.8 },
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 },
+          "remove": { "particles_nb": 2 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
